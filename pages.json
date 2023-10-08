@@ -1,0 +1,89 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "智慧城市"
+		}
+	}    ,{
+            "path" : "pages/ServerView/ServerView",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全部服务",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/EnvironmentView/EnvironmentView",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "智慧环保",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/NewView/NewView",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新闻",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/PersonalView/PersonalView",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人中心",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	},
+	"tabBar": {
+		"color": "#666",
+		"selectedColor": "#0929F7",
+		"list": [
+			{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/image/icon/home.png",
+				"selectedIconPath": "static/image/icon/home-s.png"
+			},
+			{
+				"text": "全部服务",
+				"pagePath": "pages/ServerView/ServerView",
+				"iconPath": "static/image/icon/all-server.png",
+				"selectedIconPath": "static/image/icon/all-serveer-s.png"
+			},
+			{
+				"text": "智慧环保",
+				"pagePath": "pages/EnvironmentView/EnvironmentView",
+				"iconPath": "static/image/icon/huanbao.png",
+				"selectedIconPath": "static/image/icon/huanbao-h.png"
+			},
+			{
+				"text": "新闻",
+				"pagePath": "pages/NewView/NewView",
+				"iconPath": "static/image/icon/news.png",
+				"selectedIconPath": "static/image/icon/news-s.png"
+			},
+			{
+				"text": "个人中心",
+				"pagePath": "pages/PersonalView/PersonalView",
+				"iconPath": "static/image/icon/peerson.png",
+				"selectedIconPath": "static/image/icon/person-s.png"
+			}
+		]
+	}
+}
