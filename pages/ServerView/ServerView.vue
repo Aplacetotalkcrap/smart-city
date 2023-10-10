@@ -24,7 +24,7 @@
 					<view class="text">生活服务</view>
 					<view class="rowBox">
 						<view class="row" v-for="(item, index) in dynamicList" :key="item.id"
-							v-if="item.serviceType == '生活服务'"  @click="getServer(item.id)">
+							v-if="item.serviceType == '生活服务'" @click="getServer(item.id)">
 							<image :src="baseUrl + item.imgUrl" mode="aspectFill"></image>
 							<view class="title">
 								<text>{{item.serviceName}}</text>
@@ -35,7 +35,7 @@
 					<view class="text">车主服务</view>
 					<view class="rowBox">
 						<view class="row" v-for="(item, index) in dynamicList" :key="item.id"
-							v-if="item.serviceType == '车主服务'"  @click="getServer(item.id)">
+							v-if="item.serviceType == '车主服务'" @click="getServer(item.id)">
 							<image :src="baseUrl + item.imgUrl" mode="aspectFill"></image>
 							<view class="title">
 								<text>{{item.serviceName}}</text>
@@ -99,21 +99,33 @@
 					}
 				})
 			},
-			getServer(id){
+			getServer(id) {
 				console.log(id);
-				if(id == 3){
+				// 导航到指定页面的逻辑
+				switch (id) {
+					case 31:
+						uni.navigateTo({
+							url: "/pages/legalAdvice/legalAdvice"
+						});
+						break;
+					case 28:
+						uni.navigateTo({
+							url: "/pages/education/education"
+						});
+						break;
+					case 33:
 					uni.navigateTo({
-						
+						url:"/pages/VolunteerActivities/VolunteerActivities"
 					})
-					return;
+					
+					default:
+						uni.showToast({
+							icon: "error",
+							title: "正在开发中"
+						});
+						break;
 				}
-				uni.showToast({
-					icon:"error",
-					title:"正在开发中"
-				})
 			}
-
-
 		}
 	}
 </script>
@@ -162,20 +174,22 @@
 					flex-wrap: wrap;
 					align-items: center;
 					justify-content: space-around;
+
 					.row {
 						width: 32%;
 						height: 80px;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
+
 						image {
 							width: 50px;
 							height: 50px;
 						}
-					
+
 						.title {
 							text-align: center;
-					
+
 							text {
 								font-size: 20rpx;
 							}

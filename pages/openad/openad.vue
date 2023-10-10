@@ -4,13 +4,13 @@
 		<view class="uni-margin-wrap">
 			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 				:duration="duration">
-				<swiper-item v-for="(item,index) in swiperList" :key="item.id">
+				<swiper-item v-for="(item,index) in adList" :key="item.id">
 					<view class="swiper-item uni-bg-red">
 						<image :src="baseUrl + item.advImg" mode="aspectFill"></image>
 					</view>
 				</swiper-item>
-
 			</swiper>
+			<button class="button" type="primary" @click="login">立即体验</button>
 		</view>
 	</view>
 </template>
@@ -19,17 +19,17 @@
 	export default {
 		data() {
 			return {
+				baseUrl: 'https://45.125.46.201:16698',
 				background: ['color1', 'color2', 'color3'],
 				indicatorDots: true,
 				autoplay: true,
 				interval: 2000,
 				duration: 500,
-				swiperList: [],
-				baseUrl: 'https://45.125.46.201:16698'
+				adList:[]
 			}
 		},
 		mounted() {
-			this.GetSwiper();
+			this.getad();
 		},
 		methods: {
 			changeIndicatorDots(e) {
@@ -44,50 +44,73 @@
 			durationChange(e) {
 				this.duration = e.target.value
 			},
-
-			//获取轮播图数据
-			GetSwiper() {
+			getad() {
 				uni.request({
-					url: "https://45.125.46.201:16698/prod-api/api/rotation/list",
-					method: 'GET',
+					url: "https://45.125.46.201:16698/prod-api/api/volunteer-service/ad-banner/list",
+					methods: 'GET',
 					sslVerify: false,
 					success: res => {
-						console.log(res); // 在控制台打印接口返回的数据
-						// 处理接口返回的数据
-						this.swiperList = res.data.rows
-					},
-					fail: function(err) {
-						console.log(err); // 打印错误信息
-						// 处理请求失败的情况
+						console.log(res);
+						// this.adList = res.data.rows.slice(0,1)
 					}
-				});
-
-
+				})
+			},
+			login(){
+				uni.navigateTo({
+					url:"/pages/loginview/loginview"
+				})
 			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style>
 	.uni-margin-wrap {
 		width: 690rpx;
 		width: 100%;
-		height: 400rpx;
+		height: 90vh;
 	}
 
 	.swiper {
-		height: 100%;
+		height: 90vh;
 	}
 
 	.swiper-item {
 		display: block;
-		height: 400rpx;
-		line-height: 400rpx;
+		height: 90vh;
+		line-height: 90%;
 		text-align: center;
+	}
+	
+	image{
+		width: 700rpx;
+		height: 100vh;
+	}
 
-		image {
-			width: 720rpx;
-			height: 100%;
-		}
+	.swiper-list {
+		margin-top: 40rpx;
+		margin-bottom: 0;
+	}
+
+	.uni-common-mt {
+		margin-top: 60rpx;
+		position: relative;
+	}
+
+	.info {
+		position: absolute;
+		right: 20rpx;
+	}
+
+	.uni-padding-wrap {
+		width: 550rpx;
+		padding: 0 100rpx;
+	}
+	.button{
+		width: 200rpx;
+		height: 90rpx;
+		position: fixed;
+		bottom: 200rpx;
+		left: 35vw;
 	}
 </style>
